@@ -37,36 +37,27 @@ Endpoints List:
 ### GLOBAL Response
 - Response (401) UNAUTHORIZE
 ``` JSON
-    [
-        {
-            "message": [
-                "Unauthorize User"
-            ]
-        },
-    ]
+    {
+        "message": "Unauthorize User"
+    },
 ```
 
 - Response (500) Internal Server Error
 ``` JSON
-    [
-        {
-            "message": [
-                "Internal Server Error"
-            ]
-        },
-    ]
+    {
+        "message": "Internal Server Error"
+    },
 ```
 
 - Response (404) Bad Request
 ``` JSON
-    [
-        {
-            "message": "Data not Found"
-        },
-    ]
+    {
+        "message": "Data not Found"
+    },
 ```
 
 ### POST /login
+routes to login role admin
 - Request Header
 ```JSON
     not needed        
@@ -113,6 +104,7 @@ Endpoints List:
 ```
 
 ### GET /products
+routes to get all product to show on main dashboard admin
 - Request Header
 ```JSON
     [
@@ -142,6 +134,7 @@ Endpoints List:
 ```
 
 ### POST /addproduct
+routes to add new product to database
 - Request Header
 ```JSON
     [
@@ -193,6 +186,7 @@ Endpoints List:
 ```
 
 ### PUT /product/:id
+routes edit selected product with specific ID product
 - Request Header
 ```JSON
     [
@@ -242,6 +236,7 @@ Endpoints List:
 ```
 
 ### GET /product/:id
+routes to show and fill the edit forms in client admin
 - Request Header
 ```JSON
     [
@@ -270,6 +265,7 @@ Endpoints List:
 ```
 
 ### DELETE /product/:id
+routes to delete specific product with ID the product
 - Request Header
 ```JSON
     [
@@ -291,6 +287,7 @@ Endpoints List:
 ```
 
 ### GET /banners
+routes to show all banners in database to client admin
 - Request Header
 ```JSON
     [
@@ -318,6 +315,7 @@ Endpoints List:
 ```
 
 ### POST /addbanner
+routes to add new banner to database
 - Request Header
 ```JSON
     [
@@ -367,6 +365,7 @@ Endpoints List:
 
 
 ### PUT /banner/:id
+edit banner with specific id
 - Request Header
 ```JSON
     [
@@ -411,7 +410,7 @@ Endpoints List:
 ```
 
 ### DELETE /banner/:id
-
+delete banner with specific id
 - Request Header
 ```JSON
     [

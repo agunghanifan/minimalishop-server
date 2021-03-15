@@ -8,7 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agunghanifan/ecommerce-server.git"
+    "url": "git+https://github.com/agunghanifan/ecommerce-server.git",
+    "db:create:test": "sequelize db:create --env test",
+    "db:migrate:test": "sequelize db:migrate --env test",
+    "db:seed:test": "sequelize db:seed:all --env test",
+    "db:create:dev": "sequelize db:create --env development",
+    "db:migrate:dev": "sequelize db:migrate --env development",
+    "db:seed:dev": "sequelize db:seed:all --env development"
   },
   "keywords": [],
   "author": "agunghanifan",
@@ -27,6 +33,7 @@
     "sequelize": "^6.5.1"
   },
   "devDependencies": {
-    "jest": "^26.6.3"
+    "jest": "^26.6.3",
+    "supertest": "^6.1.3"
   }
 }
