@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "postgres",
-    "password": "postgres",
+    "password": "game282",
     "database": "CMS_server_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
-    "password": "postgres",
+    "password": "game282",
     "database": "CMS_server_test",
     "host": "127.0.0.1",
     "dialect": "postgres"

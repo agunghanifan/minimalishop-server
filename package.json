@@ -4,17 +4,19 @@
   "description": "API server untuk e-commerce website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/agunghanifan/ecommerce-server.git",
+    "test": "NODE_ENV=test npx jest --detectOpenHandles --forceExit",
+    "dev": "NODE_ENV=development nodemon bin/http.js",
     "db:create:test": "sequelize db:create --env test",
     "db:migrate:test": "sequelize db:migrate --env test",
     "db:seed:test": "sequelize db:seed:all --env test",
     "db:create:dev": "sequelize db:create --env development",
     "db:migrate:dev": "sequelize db:migrate --env development",
     "db:seed:dev": "sequelize db:seed:all --env development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agunghanifan/ecommerce-server.git"
+
   },
   "keywords": [],
   "author": "agunghanifan",
