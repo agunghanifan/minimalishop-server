@@ -4,7 +4,7 @@
   "description": "API server untuk e-commerce website",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test npx jest --detectOpenHandles --forceExit",
+    "test": "npx jest --detectOpenHandles --forceExit",
     "dev": "NODE_ENV=development nodemon bin/http.js",
     "db:create:test": "sequelize db:create --env test",
     "db:migrate:test": "sequelize db:migrate --env test",

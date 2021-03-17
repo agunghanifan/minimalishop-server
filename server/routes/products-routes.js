@@ -9,7 +9,7 @@ const { authenticate, authorization } =require("../middlewares/auth")
 router.get("/products", authenticate , authorization, ControllerProduct.showProduct)
 
 // add new product to database
-router.use("/addproduct", authenticate , authorization, ControllerProduct.addProduct)
+router.post("/addproduct", authenticate , authorization, ControllerProduct.addProduct)
 
 // edit product from database
 router.put("/product/:id", authenticate , authorization, ControllerProduct.updateProduct)
