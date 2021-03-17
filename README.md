@@ -103,6 +103,8 @@ routes to login role admin
     ]
 ```
 
+- Response (500) Internal Server Error
+
 ### GET /products
 routes to get all product to show on main dashboard admin
 - Request Header
@@ -132,6 +134,9 @@ routes to get all product to show on main dashboard admin
         },
     ]
 ```
+
+- Response (401) Unauthorized
+- Response (500) Internal Server Error
 
 ### POST /addproduct
 routes to add new product to database
@@ -185,6 +190,9 @@ routes to add new product to database
     ]
 ```
 
+- Response (401) Unauthorized
+- Response (500) Internal Server Error
+
 ### PUT /product/:id
 routes edit selected product with specific ID product
 - Request Header
@@ -235,6 +243,9 @@ routes edit selected product with specific ID product
     ]
 ```
 
+- Response (401) Unauthorized
+- Response (500) Internal Server Error
+
 ### GET /product/:id
 routes to show and fill the edit forms in client admin
 - Request Header
@@ -264,6 +275,9 @@ routes to show and fill the edit forms in client admin
     ]
 ```
 
+- Response (401) Unauthorized
+- Response (500) Internal Server Error
+
 ### DELETE /product/:id
 routes to delete specific product with ID the product
 - Request Header
@@ -285,6 +299,9 @@ routes to delete specific product with ID the product
         "message": "product deleted"
     }
 ```
+
+- Response (401) Unauthorized
+- Response (500) Internal Server Error
 
 ### GET /banners
 routes to show all banners in database to client admin
@@ -313,6 +330,9 @@ routes to show all banners in database to client admin
         },
     ]
 ```
+
+- Response (401) Unauthorized
+- Response (500) Internal Server Error
 
 ### POST /addbanner
 routes to add new banner to database
@@ -363,6 +383,9 @@ routes to add new banner to database
     ]
 ```
 
+- Response (401) Unauthorized
+- Response (500) Internal Server Error
+
 
 ### PUT /banner/:id
 edit banner with specific id
@@ -409,6 +432,9 @@ edit banner with specific id
     ]
 ```
 
+- Response (401) Unauthorized
+- Response (500) Internal Server Error
+
 ### DELETE /banner/:id
 delete banner with specific id
 - Request Header
@@ -430,6 +456,9 @@ delete banner with specific id
         "message": "banner deleted"
     }
 ```
+
+- Response (401) Unauthorized
+- Response (500) Internal Server Error
 
 
 
