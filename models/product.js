@@ -41,6 +41,10 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {
           args: true,
           msg: "Image Url is required for product display purposes"
+        },
+        isUrl: {
+          args: true,
+          msg: "Image Url is must a url or link's"
         }
       }
     } ,
@@ -104,11 +108,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Product',
-    hooks: {
-      beforeCreate : (instance) => {
-        instance.CategoryId = 1
-      }
-    }
   });
   return Product;
 };

@@ -12,10 +12,24 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Category.hasMany(models.Product,{foreignKey: "CategoryId"})
+      Category.hasMany(models.Banner,{foreignKey: "CategoryId"})
     }
   };
   Category.init({
-    name: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Name is required"
+        },
+        notNull: {
+          args: true,
+          msg: "Name is required"
+        }
+      }
+    } 
   }, {
     sequelize,
     modelName: 'Category',
