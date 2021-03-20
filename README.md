@@ -459,15 +459,3 @@ delete banner with specific id
 
 - Response (401) Unauthorized
 - Response (500) Internal Server Error
-
-
-
-
-
-
-
-
-
-
-
-

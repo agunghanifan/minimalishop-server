@@ -1,4 +1,5 @@
 const { User, Product, Category } = require("../models")
+const product = require("../models/product")
 
 class ControllerProduct {
 
@@ -8,6 +9,7 @@ class ControllerProduct {
       image_url: req.body.image_url,
       price: req.body.price,
       stock: req.body.stock,
+      CategoryId: req.body.CategoryId || 1,
     }
     console.log("masuk controller add product")
     console.log(body)
@@ -73,6 +75,7 @@ class ControllerProduct {
       image_url: req.body.image_url,
       price: req.body.price,
       stock: req.body.stock,
+      CategoryId: req.body.CategoryId
     }
     Product.update(body, {where: {id: idProduct}})
       .then((data) => {
@@ -98,6 +101,23 @@ class ControllerProduct {
       })
   }
 
+  static showEditData(req, res, next) {
+    const idProduct = +req.params.id
+    console.log(idProduct, "<<<<<<<<<<<<<<<< id show edit")
+    Product.findOne({ where : {id: idProduct}})
+      .then((data) => {
+        if (data) {
+          res.status(200).json(data)
+        } else {
+          next({code: 404, message: "Data not found", from: "showeditData controller"})
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+        next({code: 500, message: "Internal Server Error", from: "showeditData controller"})
+      })
+  }
+
   static deleteProduct(req, res, next) {
     const idProduct = +req.params.id
     console.log(idProduct)
@@ -112,6 +132,34 @@ class ControllerProduct {
       .catch((err) => {
         console.log(err)
         next({code: 500, message: "Internal Server Error", from: "dari deleteproduct controller"})
+      })
+  }
+
+  static showCategories(req, res, next) {
+    Category.findAll()
+      .then((data) => {
+        res.status(200).json(data)
+      })
+      .catch((err) => {
+        console.log(err)
+        next({code: 500, message: "Internal Server Error", from: "dari showcategories controller"})
+      })
+  }
+
+  static addCategory(req, res, next) {
+    const body = {
+      name: req.body.name
+    } 
+    Category.create(body)
+      .then((data) => {
+        res.status(200).json(data)
+      })
+      .catch((err) => {
+        if (err) {
+          next({code: 400, message: err.errors[0].message, from: "addcategory controller"})
+        }
+        console.log(err)
+        next({code: 500, message: "Internal Server Error", from: "dari showcategories controller"})
       })
   }
 }
