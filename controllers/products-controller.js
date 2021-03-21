@@ -11,12 +11,9 @@ class ControllerProduct {
       stock: req.body.stock,
       CategoryId: req.body.CategoryId || 1,
     }
-    console.log("masuk controller add product")
-    console.log(body)
 
     Product.create(body)
       .then((data) => {
-        console.log(data)
         res.status(201).json(data)
       })
       .catch((err) => {
@@ -41,6 +38,9 @@ class ControllerProduct {
         {
           model: Category
         }
+      ],
+      order: [
+        ['id', 'ASC']
       ]
     })
       .then((data) => {
@@ -103,7 +103,6 @@ class ControllerProduct {
 
   static showEditData(req, res, next) {
     const idProduct = +req.params.id
-    console.log(idProduct, "<<<<<<<<<<<<<<<< id show edit")
     Product.findOne({ where : {id: idProduct}})
       .then((data) => {
         if (data) {
@@ -120,7 +119,6 @@ class ControllerProduct {
 
   static deleteProduct(req, res, next) {
     const idProduct = +req.params.id
-    console.log(idProduct)
     Product.destroy({where: {id: idProduct}})
       .then((data) => {
         if(data) {
@@ -161,6 +159,39 @@ class ControllerProduct {
         console.log(err)
         next({code: 500, message: "Internal Server Error", from: "dari showcategories controller"})
       })
+  }
+
+  static addOrReduceProduct(req, res, next) {
+    const idProduct = +req.params.id
+    const operator = req.params.operator
+    let updateData = {}
+
+    Product.findOne({ where: { id: idProduct }})
+      .then((data) => {
+        if (data && operator == "plus") {
+          updateData = {
+            stock: data.stock + 1 
+          }
+        } else if (data && operator == "minus") {
+          updateData = {
+            stock: data.stock - 1 
+          }
+        } else {
+          next({code: 404, message: "Data not Found"})
+        }
+        return Product.update(updateData, { where: { id: idProduct }})
+      })
+      .then((data) => {
+        res.status(200).json(data)
+      })
+      .catch((err) => {
+        console.log(err)
+        if (err) {
+          next({code: 404, message: "Data not Found"})
+        } else {
+          next({code: 500, message: "Internal Server Error", from: "dari showcategories controller"})
+        }
+      }) 
   }
 }
 
