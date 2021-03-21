@@ -19,6 +19,9 @@ router.post("/addcategory", authenticate , authorization, ControllerProduct.addC
 // show data to form edit in edit page
 router.get("/product/:id", authenticate , authorization, ControllerProduct.showEditData)
 
+// add or reduce stock on the database
+router.patch("/product/:id/:operator", authenticate , authorization, ControllerProduct.addOrReduceProduct)
+
 // edit product from database
 router.put("/product/:id", authenticate , authorization, ControllerProduct.updateProduct)
 
