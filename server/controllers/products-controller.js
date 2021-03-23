@@ -193,6 +193,22 @@ class ControllerProduct {
         }
       }) 
   }
+
+  static showProductById (req, res, next) {
+    Product.findOne({ where: { id: +req.params.id }})
+      .then((data) => {
+        if (data) res.status(200).json(data)
+        else throw new Error('not found')
+      })
+      .catch((err) => {
+        console.log(err)
+        if (err.message === 'not found') {
+          next({ code: 404, message: "Data not Found" })
+        } else {
+          next({ code: 500, message: "Internal Server Error" })
+        }
+      })
+  }
 }
 
 module.exports = ControllerProduct
