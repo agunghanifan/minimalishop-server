@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Product.belongsTo(models.Category,{foreignKey: "CategoryId"})
+      Product.belongsTo(models.Category,{ foreignKey: "CategoryId" })
+      Product.hasMany(models.Cart, { foreignKey: 'productId' })
     }
   };
   Product.init({
@@ -88,8 +89,8 @@ module.exports = (sequelize, DataTypes) => {
           msg: "Stock format is Number / Integer"
         },
         isNegative(value) {
-          if(typeof value === "number" && value < 1) {
-            throw new Error("Stock must be Negative and the value is above from 0")
+          if(typeof value === "number" && value < 0) {
+            throw new Error("Stock must be not Negative")
           }
         }
       }

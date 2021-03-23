@@ -1,9 +1,8 @@
-const { User, Product, Category } = require("../models")
+const { User, Product, Category, Cart } = require("../models")
 const { getToken, decodeToken } = require("../helpers/jwt")
 
 const authenticate = (req, res, next) => {
   try {
-    console.log(req.headers.access_token)
     const decode = decodeToken(req.headers.access_token)
     if (decode) {
       User.findOne({where: {email: decode.email, id: decode.id, name: decode.name, role: decode.role}})
@@ -34,14 +33,37 @@ const authorization = (req, res, next) => {
   if (role !== admin) {
     next({code: 401, message:"Unauthorize User"})
   } else if (role === "admin") {
-    console.log("success authorization")
+    console.log("success authorization admin")
     next()
   } else {
     next({code: 500, message:"Internal Server Error"})
   }
 }
 
+const authorizationCustumer = (req, res, next) => {
+  const idCart = req.params.id
+  const idUser = req.user.id
+
+  Cart.findOne({ where: { id: idCart, userId: idUser }})
+    .then((data) => {
+      if (!data) {
+        throw new Error()
+      } else {
+        console.log('Pass AUthorization Customer')
+        next()
+      }
+    })
+    .catch((err) => {
+      if (err) {
+        next({code: 401, message:"Unauthorize User"})
+      } else {
+        next({code: 500, message:"Internal Server Error"})
+      }
+    })
+}
+
 module.exports = {
   authenticate,
-  authorization
+  authorization,
+  authorizationCustumer
 }

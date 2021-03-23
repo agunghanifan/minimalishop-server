@@ -5,10 +5,10 @@ const { authenticate, authorization } =require("../middlewares/auth")
 
 //authentication after login
 // see all product in database
-router.get("/products", authenticate , authorization, ControllerProduct.showProduct)
+router.get("/products", authenticate, ControllerProduct.showProduct)
 
 // see all categories in database to put edit product and add new product page
-router.get("/categories", authenticate , authorization, ControllerProduct.showCategories)
+router.get("/categories", authenticate, ControllerProduct.showCategories)
 
 // add new product to database
 router.post("/addproduct", authenticate , authorization, ControllerProduct.addProduct)
