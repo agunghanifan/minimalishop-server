@@ -16,9 +16,58 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init({
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Name is required"
+        },
+        notNull: {
+          args: true,
+          msg: "Name is required"
+        }
+      }
+    } ,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Email is required"
+        },
+        notNull: {
+          args: true,
+          msg: "Email is required"
+        },
+        isEmail: {
+          args: true,
+          msg: "Email type is required"
+        }
+      }
+    },   
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Password is required"
+        },
+        notNull: {
+          args: true,
+          msg: "Password is required"
+        },
+        isLengthMinSix (value) {
+          if (value.length < 6) {
+            throw new Error("Password must be at least 6 characters")
+          }
+        }
+      }
+    } ,
     role: DataTypes.STRING,
   }, {
     sequelize,

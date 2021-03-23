@@ -7,6 +7,9 @@ const { authenticate, authorization } =require("../middlewares/auth")
 // see all product in database
 router.get("/products", authenticate, ControllerProduct.showProduct)
 
+// see specified product by id
+router.get("/products/:id", authenticate, ControllerProduct.showProductById)
+
 // see all categories in database to put edit product and add new product page
 router.get("/categories", authenticate, ControllerProduct.showCategories)
 

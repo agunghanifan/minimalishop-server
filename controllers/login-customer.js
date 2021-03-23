@@ -44,7 +44,15 @@ class UserCostumerController {
       })
       .catch((err) => {
         console.log(err)
-        next({ code: 500, message: "Internal Server Error", from: "register controller" })
+        let errors = []
+        if (err) {
+          err.errors.forEach((error) => {
+            errors.push(error.message)
+          })
+          next({ code: 400, message: errors, from: "register login customer controller"})
+        } else {
+          next({ code: 500, message: "Internal Server Error", from: "register controller" })
+        }
       })
   }
 }
