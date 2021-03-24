@@ -4,7 +4,7 @@ const { authenticate, authorization} = require('../middlewares/auth')
 const ControllerBanner =  require('../controllers/banner-controller')
 
 // show all banner
-router.get('/banners', authenticate, authorization, ControllerBanner.showBanner)
+router.get('/banners', ControllerBanner.showBanner)
 
 // add new banner to database
 router.post('/addBanner', authenticate, authorization, ControllerBanner.addBanner)
