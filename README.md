@@ -236,7 +236,6 @@ routes to get all product to show on main dashboard admin
     ]
 ```
 
-- Response Global (401) Unauthorized
 - Response Global (500) Internal Server Error
 
 ### POST /addproduct

@@ -5,7 +5,7 @@ const { authenticate, authorization } =require("../middlewares/auth")
 
 //authentication after login
 // see all product in database
-router.get("/products", authenticate, ControllerProduct.showProduct)
+router.get("/products", ControllerProduct.showProduct)
 
 // see specified product by id
 router.get("/products/:id", authenticate, ControllerProduct.showProductById)
