@@ -1,7 +1,7 @@
 # ecommerce-server
 API server untuk e-commerce website
 
-##API DOCUMENTATIONS
+## API DOCUMENTATIONS
 
 This app has:
 1. RESTfull endpoints
